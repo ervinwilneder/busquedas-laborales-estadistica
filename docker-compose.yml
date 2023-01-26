@@ -3,6 +3,7 @@ version: '0.1'
 services:
   scraper:
     build: .
+    image: ervinwilneder/linkedin
     container_name: busquedas-laborales-estadistica
     volumes:
       - ./downloads:/usr/src/app/downloads
