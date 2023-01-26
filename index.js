@@ -114,6 +114,7 @@ const jobs = new Array();
 
                     document.querySelectorAll('ul.scaffold-layout__list-container li.jobs-search-results__list-item').forEach(e => jobs.push({
                         'rol':e.innerText.split('\n')[0], 
+                        'empresa': e.innerText.split('\n')[1],
                         'info':e.innerText.split('\n').slice(2), 
                         'link':e.querySelector('a').href}));
 
