@@ -1,0 +1,8 @@
+version: '0.1'
+
+services:
+  scraper:
+    build: .
+    container_name: busquedas-laborales-estadistica
+    volumes:
+      - ./downloads:/usr/src/app/downloads
