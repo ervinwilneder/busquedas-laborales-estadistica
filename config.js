@@ -7,9 +7,7 @@ module.exports = {
         "product": "chrome",
         "headless": true,
         "defaultViewport": null,
-        //"executablePath": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
         "executablePath": "/opt/google/chrome/chrome",
-        //"userDataDir": `${homedir}\\AppData\\Local\\Google\\Chrome\\User Data`,
         "userDataDir": "/.config/google-chrome",
         "args": [
             `--profile-directory=Profile ${process.env.PUPPETEER_PROFILE}`,
