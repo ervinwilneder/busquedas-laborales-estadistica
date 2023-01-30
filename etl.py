@@ -17,4 +17,4 @@ df = df.reset_index().drop(columns=['index'])
 df['date'] = pd.to_datetime(df['date']).dt.date
 df['link'] = df['link'].apply(lambda x: x.split('?')[0])
 df = df.drop_duplicates(['link'], keep="first")
-df.to_csv(f'downloads/job_searchs_{today}.csv', index=False)
+df.to_csv(f'downloads/job_searchs_{today}.csv', index=False, sep='\t')

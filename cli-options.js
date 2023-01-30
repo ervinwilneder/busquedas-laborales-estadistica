@@ -18,5 +18,10 @@ parser.add_argument('--keywords', {
     help: 'Keywords separated by comma (e.g. "statistics,data,data engineer,data ops"',
 });
 
+parser.add_argument('--descriptions', {
+    help: 'Retrieve job searchs descriptions',
+    action: 'store_true'
+});
+
 // Export parser variable
 module.exports = { parser };

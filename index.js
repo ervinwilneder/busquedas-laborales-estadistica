@@ -6,6 +6,7 @@ const fs = require('fs');
 const config = require('./config');
 const tools = require('./tools');
 const { parser } = require('./cli-options');
+const { ArgumentDefaultsHelpFormatter } = require('argparse');
 
 // CLI arguments
 const args = parser.parse_args();
@@ -131,6 +132,26 @@ const jobs = new Array();
                 });
             };
         }; 
+
+        if (args.descriptions) {
+            // Iterate over jobs
+            for (record of jobs) {
+                for (jobSearch of record.jobSearchs) {
+
+                // Go to LinkedIn job search page
+                await page.goto(jobSearch.link, {"waitUntil" : "networkidle2"});
+
+                // Save job search description
+                await page.evaluate(() => {
+                    return document.querySelector('#job-details span').innerText;
+                })
+                .then(jobDescription => { 
+                    jobSearch.descripcion = jobDescription;
+                });
+
+                }
+            }
+        };
 
         // Save response
         if (!fs.existsSync('downloads')) { fs.mkdirSync('downloads') };
