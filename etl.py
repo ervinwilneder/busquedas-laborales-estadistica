@@ -16,5 +16,6 @@ df['info'] = df['info'].apply(lambda x: '\n'.join([i for i in x if not re.match(
 df = df.reset_index().drop(columns=['index'])
 df['date'] = pd.to_datetime(df['date']).dt.date
 df['link'] = df['link'].apply(lambda x: x.split('?')[0])
+df.replace(r'\r+|\n+|\t+',' ', regex=True, inplace=True)
 df = df.drop_duplicates(['link'], keep="first")
 df.to_csv(f'downloads/job_searchs_{today}.csv', index=False, sep='\t')
